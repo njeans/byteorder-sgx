@@ -1,15 +1,15 @@
 #![feature(test)]
 
-extern crate byteorder;
-extern crate rand;
 extern crate test;
 
 macro_rules! bench_num {
     ($name:ident, $read:ident, $bytes:expr, $data:expr) => {
         mod $name {
-            use super::test::black_box as bb;
-            use super::test::Bencher;
-            use byteorder::{BigEndian, ByteOrder, LittleEndian, NativeEndian};
+            use byteorder::{
+                BigEndian, ByteOrder, LittleEndian, NativeEndian,
+            };
+            use test::black_box as bb;
+            use test::Bencher;
 
             const NITER: usize = 100_000;
 
@@ -47,10 +47,19 @@ macro_rules! bench_num {
     ($ty:ident, $max:ident,
      $read:ident, $write:ident, $size:expr, $data:expr) => {
         mod $ty {
+<<<<<<< HEAD
             use super::test::black_box as bb;
             use super::test::Bencher;
             use byteorder::{BigEndian, ByteOrder, LittleEndian, NativeEndian};
             use std::$ty;
+=======
+            use byteorder::{
+                BigEndian, ByteOrder, LittleEndian, NativeEndian,
+            };
+            use std::$ty;
+            use test::black_box as bb;
+            use test::Bencher;
+>>>>>>> 663358f9d29bddadc1a8e84290ec96925f2cb851
 
             const NITER: usize = 100_000;
 
@@ -147,7 +156,10 @@ bench_num!(int_6, read_int, 6, [1, 2, 3, 4, 5, 6]);
 bench_num!(int_7, read_int, 7, [1, 2, 3, 4, 5, 6, 7]);
 bench_num!(int_8, read_int, 8, [1, 2, 3, 4, 5, 6, 7, 8]);
 
+<<<<<<< HEAD
 #[cfg(byteorder_i128)]
+=======
+>>>>>>> 663358f9d29bddadc1a8e84290ec96925f2cb851
 bench_num!(
     u128,
     MAX,
@@ -156,7 +168,10 @@ bench_num!(
     16,
     [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
 );
+<<<<<<< HEAD
 #[cfg(byteorder_i128)]
+=======
+>>>>>>> 663358f9d29bddadc1a8e84290ec96925f2cb851
 bench_num!(
     i128,
     MAX,
@@ -165,6 +180,7 @@ bench_num!(
     16,
     [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
 );
+<<<<<<< HEAD
 
 #[cfg(byteorder_i128)]
 bench_num!(uint128_1, read_uint128, 1, [1]);
@@ -262,34 +278,102 @@ bench_num!(
     [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 );
 #[cfg(byteorder_i128)]
+=======
+
+bench_num!(uint128_1, read_uint128, 1, [1]);
+bench_num!(uint128_2, read_uint128, 2, [1, 2]);
+bench_num!(uint128_3, read_uint128, 3, [1, 2, 3]);
+bench_num!(uint128_4, read_uint128, 4, [1, 2, 3, 4]);
+bench_num!(uint128_5, read_uint128, 5, [1, 2, 3, 4, 5]);
+bench_num!(uint128_6, read_uint128, 6, [1, 2, 3, 4, 5, 6]);
+bench_num!(uint128_7, read_uint128, 7, [1, 2, 3, 4, 5, 6, 7]);
+bench_num!(uint128_8, read_uint128, 8, [1, 2, 3, 4, 5, 6, 7, 8]);
+bench_num!(uint128_9, read_uint128, 9, [1, 2, 3, 4, 5, 6, 7, 8, 9]);
+bench_num!(uint128_10, read_uint128, 10, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+bench_num!(uint128_11, read_uint128, 11, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
+bench_num!(
+    uint128_12,
+    read_uint128,
+    12,
+    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+);
+bench_num!(
+    uint128_13,
+    read_uint128,
+    13,
+    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+);
+bench_num!(
+    uint128_14,
+    read_uint128,
+    14,
+    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+);
+bench_num!(
+    uint128_15,
+    read_uint128,
+    15,
+    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+);
+bench_num!(
+    uint128_16,
+    read_uint128,
+    16,
+    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+);
+
+bench_num!(int128_1, read_int128, 1, [1]);
+bench_num!(int128_2, read_int128, 2, [1, 2]);
+bench_num!(int128_3, read_int128, 3, [1, 2, 3]);
+bench_num!(int128_4, read_int128, 4, [1, 2, 3, 4]);
+bench_num!(int128_5, read_int128, 5, [1, 2, 3, 4, 5]);
+bench_num!(int128_6, read_int128, 6, [1, 2, 3, 4, 5, 6]);
+bench_num!(int128_7, read_int128, 7, [1, 2, 3, 4, 5, 6, 7]);
+bench_num!(int128_8, read_int128, 8, [1, 2, 3, 4, 5, 6, 7, 8]);
+bench_num!(int128_9, read_int128, 9, [1, 2, 3, 4, 5, 6, 7, 8, 9]);
+bench_num!(int128_10, read_int128, 10, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+bench_num!(int128_11, read_int128, 11, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
+>>>>>>> 663358f9d29bddadc1a8e84290ec96925f2cb851
 bench_num!(
     int128_12,
     read_int128,
     12,
     [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 );
+<<<<<<< HEAD
 #[cfg(byteorder_i128)]
+=======
+>>>>>>> 663358f9d29bddadc1a8e84290ec96925f2cb851
 bench_num!(
     int128_13,
     read_int128,
     13,
     [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 );
+<<<<<<< HEAD
 #[cfg(byteorder_i128)]
+=======
+>>>>>>> 663358f9d29bddadc1a8e84290ec96925f2cb851
 bench_num!(
     int128_14,
     read_int128,
     14,
     [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 );
+<<<<<<< HEAD
 #[cfg(byteorder_i128)]
+=======
+>>>>>>> 663358f9d29bddadc1a8e84290ec96925f2cb851
 bench_num!(
     int128_15,
     read_int128,
     15,
     [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 );
+<<<<<<< HEAD
 #[cfg(byteorder_i128)]
+=======
+>>>>>>> 663358f9d29bddadc1a8e84290ec96925f2cb851
 bench_num!(
     int128_16,
     read_int128,
